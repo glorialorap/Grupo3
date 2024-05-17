@@ -19,26 +19,26 @@ public class Main {
             System.out.println("6. Calcular Promedio de Perímetros de Pentágono y Hexágono");
             System.out.println("7. Salir");
 
-            int opcion;
+            int opcion=sc.nextInt();
 
             switch (opcion) {
                 case 1:
-                    agregarFigura(figuras);
+                    //agregarFigura(figuras);
                     break;
                 case 2:
-                    filtrarPorArea(figuras);
+                    //filtrarPorArea(figuras);
                     break;
                 case 3:
-                    calcularAreaTotal(figuras);
+                    //calcularAreaTotal(figuras);
                     break;
                 case 4:
-                    calcularPromedioPerimetros(figuras);
+                    //calcularPromedioPerimetros(figuras);
                     break;
                 case 5:
-                    calcularMaxyMin(figuras);
+                    //calcularMaxyMin(figuras);
                     break;
                 case 6:
-                    calcularPromedioPentagonoHexagono(figuras);
+                    //calcularPromedioPentagonoHexagono(figuras);
                     break;
                 case 7:
                     System.out.println("Saliendo del programa...");
