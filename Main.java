@@ -1,11 +1,14 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Comparator;
+import java.util.stream.Collectors;
 
 public class Main {
 
     public static void main(String[] args) {
-        
+
+        int opcion=0;
         Scanner sc = new Scanner(System.in);
         
         Pentagono pentagono = new Pentagono(null, 12, 8.2);
@@ -28,11 +31,12 @@ public class Main {
             System.out.println("5. Calcular Promedio de Perimetros de Pentagono y Hexagono");
             System.out.println("6. Salir");
 
-            int opcion;
+            System.out.print("Ingrese una opción: ");
+            opcion = sc.nextInt();
 
             switch (opcion) {
                 case 1:
-                    filtrarPorArea(figuras);
+                    calcularAreaTotal(figuras);
                     break;
                 case 2:
                     calcularAreaTotal(figuras);
@@ -72,6 +76,49 @@ public class Main {
             .orElse(0);
         System.out.println("Promedio de los perimetros de todas las figuras: " + promedioPerimetros);
     }
+
+    private static void calcularPromedioPentagonoHexagono(List<Figura> figuras) {
+        // Filtrar figuras para obtener solo pentágonos y hexágonos
+        List<Figura> pentagonosYHexagonos = figuras.stream()
+            .filter(figura -> figura instanceof Pentagono || figura instanceof Hexagono)
+            .collect(Collectors.toList());
+
+        // Calcular el promedio de perímetros de los pentágonos y hexágonos
+        double promedioPerimetros = pentagonosYHexagonos.stream()
+            .mapToDouble(Figura::Perimetro)
+            .average()
+            .orElse(0);
+
+        // Mostrar resultado
+        System.out.println("Promedio de perimetros de pentágonos y hexágonos: " + promedioPerimetros);
+        }
+    
+
+        private static void calcularMaxyMin(List<Figura> figuras) {
+            // Encontrar la figura con el máximo perímetro y área
+            Figura figuraMaxPerimetro = figuras.stream()
+                    .max(Comparator.comparing(Figura::Perimetro))
+                    .orElse(null);
+        
+            Figura figuraMaxArea = figuras.stream()
+                    .max(Comparator.comparing(Figura::Area))
+                    .orElse(null);
+        
+            // Encontrar la figura con el mínimo perímetro y área
+            Figura figuraMinPerimetro = figuras.stream()
+                    .min(Comparator.comparing(Figura::Perimetro))
+                    .orElse(null);
+        
+            Figura figuraMinArea = figuras.stream()
+                    .min(Comparator.comparing(Figura::Area))
+                    .orElse(null);
+        
+            // Mostrar resultados
+            System.out.println("Figura con máximo perímetro: " + figuraMaxPerimetro);
+            System.out.println("Figura con máximo área: " + figuraMaxArea);
+            System.out.println("Figura con mínimo perímetro: " + figuraMinPerimetro);
+            System.out.println("Figura con mínimo área: " + figuraMinArea);
+        }
 }
     
 
