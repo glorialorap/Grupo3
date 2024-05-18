@@ -36,7 +36,7 @@ public class Main {
 
             switch (opcion) {
                 case 1:
-                    calcularAreaTotal(figuras);
+                    filtrarPorArea(figuras);
                     break;
                 case 2:
                     calcularAreaTotal(figuras);
