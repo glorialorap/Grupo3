@@ -18,4 +18,5 @@ class Paralelograma extends Figura{
     public double Perimetro() {
         return 2 * (base + lado);
     }
+ 
 }

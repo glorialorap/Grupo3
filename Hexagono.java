@@ -13,4 +13,5 @@ class Hexagono extends Figura{
     public double Perimetro() {
         return 6 * lado;
     }
+
 }

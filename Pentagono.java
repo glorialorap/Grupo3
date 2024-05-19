@@ -16,4 +16,5 @@ class Pentagono extends Figura{
     public double Perimetro() {
         return 5 * lado;
     }
+
 }

@@ -18,4 +18,5 @@ class Rombo extends Figura{
     public double Perimetro() {
         return 4 * lado;
     }
+
 }

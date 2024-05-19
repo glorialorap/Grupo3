@@ -3,6 +3,7 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.Comparator;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Main {
 
@@ -31,12 +32,12 @@ public class Main {
             System.out.println("5. Calcular Promedio de Perimetros de Pentagono y Hexagono");
             System.out.println("6. Salir");
 
-            System.out.print("Ingrese una opción: ");
+            System.out.print("\nIngrese una opción: ");
             opcion = sc.nextInt();
 
             switch (opcion) {
                 case 1:
-                    filtrarPorArea(figuras);
+                    filtrarPorArea(figuras, sc);
                     break;
                 case 2:
                     calcularAreaTotal(figuras);
@@ -60,6 +61,43 @@ public class Main {
             }
             
         }
+    }
+
+    private static void filtrarPorArea(List<Figura> figuras, Scanner sc){
+        //filtra el area que el usuario desea ver
+            System.out.println("\nCual area desea ver? \n[1]Hexagono [2]Paralelogramo [3]Pentagono [4]Rombo");
+            int areaFigura=sc.nextInt();
+            
+            switch (areaFigura) {
+                case 1:
+                    List<Figura> figurasHexagono = figuras.stream().
+                    filter(f->f instanceof Hexagono).
+                    collect(Collectors.toList());
+                    figurasHexagono.forEach(System.out::println);
+                    break;
+                case 2:
+                    List<Figura> figurasParalelogramo = figuras.stream().
+                    filter(f->f instanceof Paralelograma).
+                    collect(Collectors.toList());
+                    figurasParalelogramo.forEach(System.out::println);
+                    break;
+                case 3:
+                    List<Figura> figurasPentagono = figuras.stream().
+                    filter(f->f instanceof Pentagono).
+                    collect(Collectors.toList());
+                    figurasPentagono.forEach(System.out::println);
+                    break;
+                case 4:
+                    List<Figura> figurasRombo = figuras.stream().
+                    filter(f->f instanceof Rombo).
+                    collect(Collectors.toList());
+                    figurasRombo.forEach(System.out::println);
+                    break;
+                default:
+                System.out.println("Ingresa una opción valida");
+                    break;
+            }
+            
     }
     
     private static void calcularAreaTotal(List<Figura> figuras) {
@@ -98,7 +136,7 @@ public class Main {
             // Encontrar la figura con el máximo perímetro y área
             Figura figuraMaxPerimetro = figuras.stream()
                     .max(Comparator.comparing(Figura::Perimetro))
-                    .orElse(null);
+                    .orElse(null);                   
         
             Figura figuraMaxArea = figuras.stream()
                     .max(Comparator.comparing(Figura::Area))
