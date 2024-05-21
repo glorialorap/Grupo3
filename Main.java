@@ -10,7 +10,7 @@ public class Main {
         //menu:
         while (true) {
             System.out.println("\n--BIENVENIDO AL MENU--");
-            System.out.println("[1]Realizar alta\n[2]Realizar baja\n[3]Cambios\n[4]Consultas\n[5]Salir");
+            System.out.println("[1]Realizar alta\n[2]Realizar baja\n[3]Cambios\n[4]Consultas\n[5]Calcular promedio de precios\n[6]Salir");
             opc = sc.nextInt();
 
             switch (opc) {
@@ -53,8 +53,13 @@ public class Main {
                         System.out.println("Numero: " + articulo.numero + ", Descripcion: " + articulo.descripcion + ", Precio Anterior: " + articulo.precioAnterior + ", Precio Actual: " + articulo.precioActual);
                     }
                     break;
+                
+                case 5: //calcular promedio de precios
+                    double promedio = ga.calcularPromedioPrecios();
+                    System.out.println("El promedio de los precios actuales es: " + promedio);
+                    break;
 
-                case 5: //salida
+                case 6: //salida
                     System.out.println("Hasta luego");
                     sc.close();
                     System.exit(0);
