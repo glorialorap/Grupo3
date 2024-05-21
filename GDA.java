@@ -17,17 +17,17 @@ public class GDA {
             fileCreated = file.createNewFile();
             FileWriter fileWriter = new FileWriter(file);
             for (Articulo articulo : articulos) {
-                fileWriter.write(articulo.numero + "," + articulo.descripcion + "," + articulo.precioAnterior + "," + articulo.precioActual + "\n");
+                fileWriter.write(articulo.numero + "," + articulo.descripcion + "," + articulo.precioAnterior + "," + articulo.precioActual + "," + articulo.marca + "," + articulo.peso + "," + articulo.dimensiones + "\n");
             }
             fileWriter.close();
             if (fileCreated) {
-                System.out.println("=== El archivo se creo correctamente ===");
+                System.out.println("=== El archivo se creó correctamente ===");
             } else {
                 System.out.println("=== El archivo ya existe ===");
             }
 
         } catch (IOException e) {
-            System.out.println("=== Excepcion al crear el archivo " + e);
+            System.out.println("=== Excepción al crear el archivo " + e);
         }
     }
 
@@ -43,10 +43,14 @@ public class GDA {
                 String descripcion = parts[1];
                 double precioAnterior = Double.parseDouble(parts[2]);
                 double precioActual = Double.parseDouble(parts[3]);
-                articulos.add(new Articulo(numero, descripcion, precioAnterior, precioActual));
+                String marca = parts[4];
+                double peso = Double.parseDouble(parts[5]);
+                String dimensiones = parts[6];
+                articulos.add(new Articulo(numero, descripcion, precioAnterior, precioActual, marca, peso, dimensiones));
             }
+            System.out.println("=== Archivo leído correctamente ===");
         } catch (FileNotFoundException e) {
-            System.out.println(" === Hubo un error al abrir el archivo " + e);
+            System.out.println("=== Hubo un error al abrir el archivo " + e);
         }
     }
 
@@ -54,24 +58,29 @@ public class GDA {
         for (int i = 0; i < articulos.size(); i++) {
             if (articulos.get(i).numero == numero) {
                 articulos.remove(i);
+                System.out.println("=== Artículo eliminado correctamente ===");
                 return;
             }
         }
         System.out.println("=== Artículo no encontrado ===");
     }
 
-    public void modificarArticulo(int numero, String descripcion, double precioAnterior, double precioActual) {
+    public void modificarArticulo(int numero, String descripcion, double precioAnterior, double precioActual, String marca, double peso, String dimensiones) {
         for (Articulo articulo : articulos) {
             if (articulo.numero == numero) {
                 articulo.descripcion = descripcion;
                 articulo.precioAnterior = precioAnterior;
                 articulo.precioActual = precioActual;
+                articulo.marca = marca;
+                articulo.peso = peso;
+                articulo.dimensiones = dimensiones;
+                System.out.println("=== Artículo modificado correctamente ===");
                 return;
             }
         }
         System.out.println("=== Artículo no encontrado ===");
     }
-    
+
     public double calcularPromedioPrecios() {
         if (articulos.isEmpty()) {
             return 0;
@@ -82,5 +91,4 @@ public class GDA {
         }
         return suma / articulos.size();
     }
-    
 }
