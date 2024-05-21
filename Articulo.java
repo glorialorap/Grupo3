@@ -3,6 +3,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Articulo {
+    
     int numero;
     String descripcion;
     double precioAnterior;
