@@ -72,4 +72,15 @@ public class GDA {
         System.out.println("=== Artículo no encontrado ===");
     }
     
+    public double calcularPromedioPrecios() {
+        if (articulos.isEmpty()) {
+            return 0;
+        }
+        double suma = 0;
+        for (Articulo art : articulos) {
+            suma += art.precioActual;
+        }
+        return suma / articulos.size();
+    }
+    
 }
