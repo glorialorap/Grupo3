@@ -92,3 +92,4 @@ public class GDA {
         return suma / articulos.size();
     }
 }
+
