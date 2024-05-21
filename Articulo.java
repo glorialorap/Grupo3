@@ -12,7 +12,9 @@ public class Articulo {
     double peso;  
     String dimensiones;  
     
-    public Articulo(int numero, String descripcion, double precioAnterior, double precioActual) {
+    
+    public Articulo(int numero, String descripcion, double precioAnterior, double precioActual, String marca,
+            double peso, String dimensiones) {
         this.numero = numero;
         this.descripcion = descripcion;
         this.precioAnterior = precioAnterior;
